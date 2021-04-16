@@ -7,8 +7,8 @@
     tools:context=".Detalle_Likes"
     tools:ignore="MissingDefaultResource">
 
-    <include android:id="@+id/miActionBar"
-        layout="@layout/action_bar">
+    <include android:id="@+id/miActionBar2"
+        layout="@layout/action_bar2">
     </include>
 
     <TextView
@@ -19,7 +19,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miActionBar"
+        app:layout_constraintTop_toBottomOf="@+id/miActionBar2"
         android:textStyle="bold"
         android:textSize="20dp"
         ></TextView>

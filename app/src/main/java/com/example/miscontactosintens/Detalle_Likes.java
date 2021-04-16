@@ -21,17 +21,19 @@ public class Detalle_Likes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalle__likes);
-        Toolbar miBar= findViewById(R.id.miActionBar);
+        Toolbar miBar= findViewById(R.id.miActionBar2);
         setSupportActionBar(miBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listaContactos= findViewById(R.id.reclyContactos);
-        /*ver como lineal
+        //ver como lineal
         LinearLayoutManager lln=new LinearLayoutManager(this);
         lln.setOrientation(LinearLayoutManager.VERTICAL);
-        listaContactos.setLayoutManager(lln);*/
-        // ver como gridlayaout
+        listaContactos.setLayoutManager(lln);
+        /* ver como gridlayaout
         GridLayoutManager glm=new GridLayoutManager(this,2);
         listaContactos.setLayoutManager(glm);
+
+         */
         iniciarlizarListaContactos();
         inicializarAdaptador();
 

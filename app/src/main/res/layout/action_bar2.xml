@@ -7,18 +7,15 @@
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:navigationIcon="@drawable/logoperrito"
-    app:titleTextColor="@color/white"
-    app:title="PERRITOS CUTE">
+    app:title=" "
+    app:titleTextColor="@color/white">
 
     <ImageView
-        android:id="@+id/nLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/nlikes"
-        android:translationX="90dp"
+        android:src="@drawable/logoperrito"
+        android:layout_marginLeft="0dp"
         >
-
     </ImageView>
 
 </androidx.appcompat.widget.Toolbar>
