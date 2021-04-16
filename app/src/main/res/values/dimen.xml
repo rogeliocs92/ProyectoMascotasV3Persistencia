@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="nombre">30</dimen>
+    <dimen name="telefono">25</dimen>
+    <dimen name="correo">25</dimen>
+</resources>

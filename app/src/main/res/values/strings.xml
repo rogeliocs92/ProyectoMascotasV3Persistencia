@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PERRITOS CUTE</string>
+    <string name="nombre">Rogelio</string>
+    <string name="telefono">3531049493</string>
+    <string name="email">roge.cortes92</string>
+
+    <string name="pnombre">Nombre</string>
+    <string name="pLikes">Telefono</string>
+    <string name="pemail">Correo</string>
+
+</resources>
