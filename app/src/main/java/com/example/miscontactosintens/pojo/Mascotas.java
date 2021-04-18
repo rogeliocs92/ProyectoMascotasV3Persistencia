@@ -1,4 +1,4 @@
-package com.example.miscontactosintens;
+package com.example.miscontactosintens.pojo;
 
 public class Mascotas {
     private String nombre;

@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.TextView;
+
+import com.example.miscontactosintens.adapter.ContactoAdaptador;
+import com.example.miscontactosintens.adapter.ContactoAdaptador2;
+import com.example.miscontactosintens.pojo.Mascotas;
 
 import java.util.ArrayList;
 
@@ -26,14 +29,12 @@ public class Detalle_Likes extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listaContactos= findViewById(R.id.reclyContactos);
         //ver como lineal
-        LinearLayoutManager lln=new LinearLayoutManager(this);
-        lln.setOrientation(LinearLayoutManager.VERTICAL);
-        listaContactos.setLayoutManager(lln);
-        /* ver como gridlayaout
-        GridLayoutManager glm=new GridLayoutManager(this,2);
+
+
+        GridLayoutManager glm=new GridLayoutManager(this,3);
         listaContactos.setLayoutManager(glm);
 
-         */
+
         iniciarlizarListaContactos();
         inicializarAdaptador();
 
@@ -47,7 +48,7 @@ public class Detalle_Likes extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
     public void inicializarAdaptador(){
-        ContactoAdaptador adaptador=new ContactoAdaptador(mascotas,this);
+        ContactoAdaptador2 adaptador=new ContactoAdaptador2(mascotas,this);
         listaContactos.setAdapter(adaptador);
     }
     public void iniciarlizarListaContactos(){

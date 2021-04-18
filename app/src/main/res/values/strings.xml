@@ -8,4 +8,13 @@
     <string name="pLikes">Telefono</string>
     <string name="pemail">Correo</string>
 
+    <string name="textNombre">Nombre Completo</string>
+    <string name="texCorreo">Correo Electronico</string>
+    <string name="textMensaje">Mensaje...</string>
+    <string name="btnEnviar">ENVIAR COMENTARIO</string>
+
+    <!--MENU OPCIONES -->
+    <string name="menuContacto">Contacto...</string>
+    <string name="menuAcercaD">Acerca De...</string>
+
 </resources>

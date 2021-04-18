@@ -11,14 +11,4 @@
     app:titleTextColor="@color/white"
     app:title="PERRITOS CUTE">
 
-    <ImageView
-        android:id="@+id/nLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/nlikes"
-        android:translationX="90dp"
-        >
-
-    </ImageView>
-
 </androidx.appcompat.widget.Toolbar>

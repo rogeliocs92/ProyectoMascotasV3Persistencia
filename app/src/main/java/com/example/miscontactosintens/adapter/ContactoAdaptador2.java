@@ -1,7 +1,6 @@
-package com.example.miscontactosintens;
+package com.example.miscontactosintens.adapter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.miscontactosintens.R;
+import com.example.miscontactosintens.pojo.Mascotas;
+
 import java.util.ArrayList;
 
 
-public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.ContactoViewHolder>{
+public class ContactoAdaptador2 extends RecyclerView.Adapter<ContactoAdaptador2.ContactoViewHolder>{
 
     ArrayList<Mascotas> mascotas;
     Activity activity;
-    public ContactoAdaptador(ArrayList<Mascotas> mascotas, Activity activity){
+    public ContactoAdaptador2(ArrayList<Mascotas> mascotas, Activity activity){
         this.mascotas = mascotas;
         this.activity=activity;
     }
@@ -28,15 +30,15 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
     @NonNull
     @Override
     public ContactoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_mascotas,parent,false);
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_mascotas2,parent,false);
         return new ContactoViewHolder(v);
     }
     // asocia cada elemento de la lista con cada view
     @Override
     public void onBindViewHolder(@NonNull ContactoViewHolder contactoViewHolder, int position) {
         Mascotas mascotas = this.mascotas.get(position);
+
         contactoViewHolder.imgFoto.setImageResource(mascotas.getFoto());
-        contactoViewHolder.textNombre.setText(mascotas.getNombre());
         contactoViewHolder.textLikes.setText(mascotas.getLinkes());
         contactoViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override

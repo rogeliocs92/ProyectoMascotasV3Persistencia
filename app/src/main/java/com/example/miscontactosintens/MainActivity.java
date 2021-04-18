@@ -1,14 +1,26 @@
 package com.example.miscontactosintens;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
+
+import com.example.miscontactosintens.adapter.ContactoAdaptador;
+import com.example.miscontactosintens.adapter.PageAdapter;
+import com.example.miscontactosintens.fragments.PerfilFragment;
+import com.example.miscontactosintens.fragments.RecyclerViewFragment;
+import com.example.miscontactosintens.pojo.Mascotas;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
@@ -16,48 +28,71 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView listaContactos;
     ArrayList<Mascotas> mascotas;
     ImageView imgLike;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar miBar= findViewById(R.id.miActionBar);
-        imgLike= findViewById(R.id.nLike);
-        imgLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, Detalle_Likes.class);
-                startActivity(intent);
-            }
-        });
-        setSupportActionBar(miBar);
-        listaContactos= findViewById(R.id.reclyContactos);
-         //ver como lineal
-        LinearLayoutManager lln=new LinearLayoutManager(this);
-        lln.setOrientation(LinearLayoutManager.VERTICAL);
-        listaContactos.setLayoutManager(lln);
-        /* ver como gridlayaout
-        GridLayoutManager glm=new GridLayoutManager(this,2);
-        listaContactos.setLayoutManager(glm);*/
-        iniciarlizarListaContactos();
-        inicializarAdaptador();
 
-        /* manejado con listview
-        ListView listaContactos= findViewById(R.id.listaContactos);
-        listaContactos.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,nombresContacto));
+        toolbar=findViewById(R.id.toolbar);
+        tabLayout=findViewById(R.id.tabLayout);
+        viewPager=findViewById(R.id.viewPager);
 
-        listaContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(MainActivity.this,Detalle_Contacto.class);
-                intent.putExtra(getResources().getString(R.string.pnombre),contactos.get(position).getNombre());
-                intent.putExtra(getResources().getString(R.string.ptelefono),contactos.get(position).getTelefono());
-                intent.putExtra(getResources().getString(R.string.pemail),contactos.get(position).getCorreo());
-                startActivity(intent);
-            }
-        });
-         */
+        if( toolbar!=null){
+            setSupportActionBar(toolbar);
+        }
+        setUpViewPager();
     }
 
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList<Fragment> fragments=new ArrayList<>();
+        fragments.add(new RecyclerViewFragment());
+        fragments.add(new PerfilFragment());
+        return fragments;
+    }
+    public void setUpViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),agregarFragments()));
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.info);
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_opciones,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()){
+            case R.id.mContacto:
+                intent=new Intent(MainActivity.this, Contactanos.class);
+                startActivity(intent);
+                break;
+            case R.id.mAcercaD:
+                intent=new Intent(MainActivity.this, AcercaDE.class);
+                startActivity(intent);
+                break;
+            case R.id.mRefresh:
+                intent=new Intent(MainActivity.this, Detalle_Likes.class);
+                startActivity(intent);
+                break;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
     public void inicializarAdaptador(){
         ContactoAdaptador adaptador=new ContactoAdaptador(mascotas,this);
         listaContactos.setAdapter(adaptador);
@@ -70,4 +105,5 @@ public class MainActivity extends AppCompatActivity {
         mascotas.add(new Mascotas(R.drawable.perrito4,"Chatito      "," 7"));
         mascotas.add(new Mascotas(R.drawable.perrito5,"Coqueta      "," 4"));
     }
+
 }

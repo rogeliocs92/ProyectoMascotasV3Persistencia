@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Detalle_Likes"
-    tools:ignore="MissingDefaultResource">
-
-    <include android:id="@+id/miActionBar2"
-        layout="@layout/action_bar2">
-    </include>
-
+    android:layout_height="match_parent">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/circularImageView"
@@ -26,10 +20,10 @@
         app:civ_shadow_radius="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
@@ -40,20 +34,20 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circularImageView"></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reclyContactos"
-        android:layout_width="421dp"
-        android:layout_height="428dp"
-        android:layout_below="@id/circularImageView"
+        android:id="@+id/reclyContactosFragment"
+        android:layout_width="404dp"
+        android:layout_height="443dp"
+        android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="-4dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularImageView"
+        app:layout_constraintVertical_bias="0.99">
 
     </androidx.recyclerview.widget.RecyclerView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
