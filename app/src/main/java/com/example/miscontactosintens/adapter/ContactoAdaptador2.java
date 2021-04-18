@@ -39,13 +39,7 @@ public class ContactoAdaptador2 extends RecyclerView.Adapter<ContactoAdaptador2.
         Mascotas mascotas = this.mascotas.get(position);
 
         contactoViewHolder.imgFoto.setImageResource(mascotas.getFoto());
-        contactoViewHolder.textLikes.setText(mascotas.getLinkes());
-        contactoViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(activity,"Das Like a "+ mascotas.getNombre(),Toast.LENGTH_SHORT).show();
-            }
-        });
+        contactoViewHolder.textLikes.setText(mascotas.getLinkes()+"");
 
     }
 

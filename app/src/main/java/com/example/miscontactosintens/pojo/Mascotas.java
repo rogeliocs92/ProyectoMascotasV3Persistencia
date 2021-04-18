@@ -2,12 +2,12 @@ package com.example.miscontactosintens.pojo;
 
 public class Mascotas {
     private String nombre;
-    private String linkes;
+    private int linkes;
 
 
     private int foto;
 
-    public Mascotas(int foto, String nombre, String linkes) {
+    public Mascotas(int foto, String nombre, int linkes) {
         this.nombre = nombre;
         this.linkes = linkes;
         this.foto=foto;
@@ -21,11 +21,11 @@ public class Mascotas {
         this.nombre = nombre;
     }
 
-    public String getLinkes() {
+    public int getLinkes() {
         return linkes;
     }
 
-    public void setLinkes(String linkes) {
+    public void setLinkes(int linkes) {
         this.linkes = linkes;
     }
 

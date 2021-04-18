@@ -53,11 +53,11 @@ public class Detalle_Likes extends AppCompatActivity {
     }
     public void iniciarlizarListaContactos(){
         mascotas =new ArrayList<>();
-        mascotas.add(new Mascotas(R.drawable.perrito1,"Chiquitin","10"));
-        mascotas.add(new Mascotas(R.drawable.perrito2,"Bolita      "," 3"));
-        mascotas.add(new Mascotas(R.drawable.perrito3,"Dormilon"," 8"));
-        mascotas.add(new Mascotas(R.drawable.perrito4,"Chatito      "," 7"));
-        mascotas.add(new Mascotas(R.drawable.perrito5,"Coqueta      "," 4"));
+        mascotas.add(new Mascotas(R.drawable.perrito1,"Chiquitin",10));
+        mascotas.add(new Mascotas(R.drawable.perrito2,"Bolita      ", 3));
+        mascotas.add(new Mascotas(R.drawable.perrito3,"Dormilon", 8));
+        mascotas.add(new Mascotas(R.drawable.perrito4,"Chatito      ", 7));
+        mascotas.add(new Mascotas(R.drawable.perrito5,"Coqueta      ", 4));
     }
     /*
     public void llamar(View view){

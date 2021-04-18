@@ -47,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ArrayList<Fragment> agregarFragments(){
+        iniciarlizarListaContactos();
         ArrayList<Fragment> fragments=new ArrayList<>();
-        fragments.add(new RecyclerViewFragment());
-        fragments.add(new PerfilFragment());
+        fragments.add(new RecyclerViewFragment(mascotas));
+        fragments.add(new PerfilFragment(mascotas));
         return fragments;
     }
     public void setUpViewPager(){
@@ -93,17 +94,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void inicializarAdaptador(){
-        ContactoAdaptador adaptador=new ContactoAdaptador(mascotas,this);
-        listaContactos.setAdapter(adaptador);
-    }
     public void iniciarlizarListaContactos(){
         mascotas =new ArrayList<>();
-        mascotas.add(new Mascotas(R.drawable.perrito1,"Chiquitin","10"));
-        mascotas.add(new Mascotas(R.drawable.perrito2,"Bolita      "," 3"));
-        mascotas.add(new Mascotas(R.drawable.perrito3,"Dormilon"," 8"));
-        mascotas.add(new Mascotas(R.drawable.perrito4,"Chatito      "," 7"));
-        mascotas.add(new Mascotas(R.drawable.perrito5,"Coqueta      "," 4"));
+        mascotas.add(new Mascotas(R.drawable.perrito1,"Chiquitin",10));
+        mascotas.add(new Mascotas(R.drawable.perrito2,"Bolita      ", 3));
+        mascotas.add(new Mascotas(R.drawable.perrito3,"Dormilon", 8));
+        mascotas.add(new Mascotas(R.drawable.perrito4,"Chatito      ", 7));
+        mascotas.add(new Mascotas(R.drawable.perrito5,"Coqueta      ", 4));
     }
 
 }
