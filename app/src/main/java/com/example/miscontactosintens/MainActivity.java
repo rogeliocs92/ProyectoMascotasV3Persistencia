@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Fragment> agregarFragments(){
         iniciarlizarListaContactos();
         ArrayList<Fragment> fragments=new ArrayList<>();
-        fragments.add(new RecyclerViewFragment(mascotas));
+        fragments.add(new RecyclerViewFragment(this));
         fragments.add(new PerfilFragment(mascotas));
         return fragments;
     }

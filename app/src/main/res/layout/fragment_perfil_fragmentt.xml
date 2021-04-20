@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.mikhaellopez.circularimageview.CircularImageView
-        android:id="@+id/circularImageView"
+        android:id="@+id/circularImageViewPerfil"
         android:layout_width="187dp"
         android:layout_height="187dp"
         android:layout_gravity="center"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chiquitin"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circularImageView"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/circularImageViewPerfil"></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reclyContactosFragment"

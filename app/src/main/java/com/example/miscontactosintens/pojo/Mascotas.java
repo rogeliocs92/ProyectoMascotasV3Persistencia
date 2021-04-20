@@ -1,12 +1,15 @@
 package com.example.miscontactosintens.pojo;
 
 public class Mascotas {
+
+    private int id;
     private String nombre;
     private int linkes;
-
-
     private int foto;
 
+    public  Mascotas(){
+
+    }
     public Mascotas(int foto, String nombre, int linkes) {
         this.nombre = nombre;
         this.linkes = linkes;
@@ -37,4 +40,11 @@ public class Mascotas {
         this.foto = foto;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.miscontactosintens.MainActivity;
 import com.example.miscontactosintens.R;
+import com.example.miscontactosintens.db.ConstructorContactos;
 import com.example.miscontactosintens.pojo.Mascotas;
 
 import java.util.ArrayList;
@@ -22,9 +24,12 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
 
     ArrayList<Mascotas> mascotas;
     Activity activity;
-    public ContactoAdaptador(ArrayList<Mascotas> mascotas, Activity activity){
+    ContactoAdaptador2 contactoAdaptador2;
+    MainActivity mainActivity;
+    public ContactoAdaptador(ArrayList<Mascotas> mascotas, Activity activity, MainActivity mainActivity){
         this.mascotas = mascotas;
         this.activity=activity;
+        this.mainActivity=mainActivity;
     }
     //inflar el layout y lo pasara  al viewholder para que obtenga los viewa
     @NonNull
@@ -42,8 +47,11 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         contactoViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mascotas.setLinkes(mascotas.getLinkes()+1);
-                contactoViewHolder.textLikes.setText(mascotas.getLinkes()+"");
+                ConstructorContactos constructorContactos=new ConstructorContactos(activity);
+                constructorContactos.darLikeMascota(mascotas);
+                /*mascotas.setLinkes(mascotas.getLinkes()+1);*/
+                contactoViewHolder.textLikes.setText(constructorContactos.obtenerLikesMascotas(mascotas)+"");
+                mainActivity.setUpViewPager();
 
             }
         });

@@ -52,7 +52,7 @@ public class ContactoAdaptador2 extends RecyclerView.Adapter<ContactoAdaptador2.
         private ImageView imgFoto;
         private TextView textNombre;
         private TextView textLikes;
-        private ImageButton btnLike;
+        private ImageView btnLike;
         public ContactoViewHolder(@NonNull View itemView) {
             super(itemView);
             imgFoto     = itemView.findViewById(R.id.imgFoto);

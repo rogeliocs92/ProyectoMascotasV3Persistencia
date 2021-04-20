@@ -9,17 +9,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.TextView;
 
 import com.example.miscontactosintens.adapter.ContactoAdaptador;
 import com.example.miscontactosintens.adapter.ContactoAdaptador2;
+import com.example.miscontactosintens.db.BaseDatos;
+import com.example.miscontactosintens.fragments.IReciclerViewFragmentView;
 import com.example.miscontactosintens.pojo.Mascotas;
+import com.example.miscontactosintens.presentador.IReciclerViewFragmentPresenter;
+import com.example.miscontactosintens.presentador.PerfilFragmentPresenter;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 
-public class Detalle_Likes extends AppCompatActivity {
+public class Detalle_Likes extends AppCompatActivity implements IReciclerViewFragmentView {
 
     private RecyclerView listaContactos;
     ArrayList<Mascotas> mascotas;
+    IReciclerViewFragmentPresenter presenter;
+    TextView textViewNombre;
+    CircularImageView circularImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +36,22 @@ public class Detalle_Likes extends AppCompatActivity {
         Toolbar miBar= findViewById(R.id.miActionBar2);
         setSupportActionBar(miBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        circularImageView=findViewById(R.id.circularImageView);
+        textViewNombre= findViewById(R.id.textViewNombre);
         listaContactos= findViewById(R.id.reclyContactos);
-        //ver como lineal
-
-
-        GridLayoutManager glm=new GridLayoutManager(this,3);
-        listaContactos.setLayoutManager(glm);
-
-
-        iniciarlizarListaContactos();
-        inicializarAdaptador();
+        BaseDatos db=new BaseDatos(getApplicationContext());
+        mascotas=db.obtenerTodosMascotas();
+        int likeMayor=0;
+        int idLikeMayor=0;
+        for(int i=0; i<mascotas.size();i++){
+            if(likeMayor<=mascotas.get(i).getLinkes()){
+                likeMayor=mascotas.get(i).getLinkes();
+                idLikeMayor=i;
+            }
+        }
+        textViewNombre.setText(mascotas.get(idLikeMayor).getNombre());
+        circularImageView.setImageResource(mascotas.get(idLikeMayor).getFoto());
+        presenter= new PerfilFragmentPresenter(this,getApplicationContext());
 
     }
     @Override
@@ -47,17 +62,39 @@ public class Detalle_Likes extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-    public void inicializarAdaptador(){
-        ContactoAdaptador2 adaptador=new ContactoAdaptador2(mascotas,this);
-        listaContactos.setAdapter(adaptador);
+
+    @Override
+    public void generarLinerLayaoutVertical() {
+
     }
-    public void iniciarlizarListaContactos(){
-        mascotas =new ArrayList<>();
-        mascotas.add(new Mascotas(R.drawable.perrito1,"Chiquitin",10));
-        mascotas.add(new Mascotas(R.drawable.perrito2,"Bolita      ", 3));
-        mascotas.add(new Mascotas(R.drawable.perrito3,"Dormilon", 8));
-        mascotas.add(new Mascotas(R.drawable.perrito4,"Chatito      ", 7));
-        mascotas.add(new Mascotas(R.drawable.perrito5,"Coqueta      ", 4));
+
+    @Override
+    public ContactoAdaptador crearAdaptador(ArrayList<Mascotas> mascotas) {
+        return null;
+    }
+
+
+    @Override
+    public ContactoAdaptador2 crearAdaptador2(ArrayList<Mascotas> mascotas) {
+        ContactoAdaptador2 adaptador=new ContactoAdaptador2(mascotas,this);
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(ContactoAdaptador contactoAdaptador) {
+
+    }
+
+    @Override
+    public void inicializarAdaptadorRV2(ContactoAdaptador2 contactoAdaptador2) {
+        listaContactos.setAdapter(contactoAdaptador2);
+    }
+
+    @Override
+    public void generarGirdLayaout() {
+        //ver como lineal
+        GridLayoutManager glm=new GridLayoutManager(this,3);
+        listaContactos.setLayoutManager(glm);
     }
     /*
     public void llamar(View view){
