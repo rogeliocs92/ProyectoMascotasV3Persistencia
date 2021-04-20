@@ -1,6 +1,6 @@
 package com.example.miscontactosintens.pojo;
 
-public class Mascotas {
+public class Mascotas implements Comparable<Mascotas>{
 
     private int id;
     private String nombre;
@@ -47,4 +47,20 @@ public class Mascotas {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public int compareTo(Mascotas o) {
+        int byAge = Integer.compare(o.linkes,linkes);
+        if ( byAge != 0 ) {
+            return byAge;
+        }
+        if ( nombre == null ) {
+            return o.nombre == null ? 0 : 1;
+        }
+        if ( o.nombre == null ) {
+            return 1;
+        }
+        return nombre.compareToIgnoreCase(o.nombre);
+    }
+
 }
